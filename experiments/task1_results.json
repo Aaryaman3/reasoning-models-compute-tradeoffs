@@ -1,0 +1,54 @@
+{
+  "timestamp": "2025-11-26T01:14:53.198776",
+  "baseline_results": {
+    "phi2": {
+      "model": "phi2",
+      "accuracy": 0.36,
+      "correct": 36,
+      "total": 100,
+      "avg_tokens": 188.3,
+      "avg_time": 5.991093325614929
+    },
+    "tinyllama": {
+      "model": "tinyllama",
+      "accuracy": 0.03,
+      "correct": 3,
+      "total": 100,
+      "avg_tokens": 178.08,
+      "avg_time": 4.512642245292664
+    },
+    "opt-1.3b": {
+      "model": "opt-1.3b",
+      "accuracy": 0.01,
+      "correct": 1,
+      "total": 100,
+      "avg_tokens": 254.23,
+      "avg_time": 4.219437465667725
+    }
+  },
+  "routing_results": {
+    "strategy": "routing",
+    "accuracy": 0.375,
+    "correct": 75,
+    "total": 200,
+    "avg_tokens": 185.07,
+    "avg_time": 5.880277816057205,
+    "routing_decisions": {
+      "simple": 176,
+      "complex": 24
+    },
+    "model_usage": {
+      "phi2": 176,
+      "tinyllama": 24
+    }
+  },
+  "optimal_threshold": 0.6499999999999999,
+  "improvements": {
+    "token_reduction_percent": 1.7153478491768515,
+    "accuracy_change_percent": 4.166666666666674
+  },
+  "model_mapping": {
+    "simple": "phi2",
+    "complex": "tinyllama"
+  }
+}
