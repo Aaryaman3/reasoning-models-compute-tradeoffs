@@ -28,7 +28,7 @@ DATASETS = {
     'sat': {
         'enabled': True,
         'num_samples': 300,
-        'max_tokens': 512,
+        'max_tokens': 20,
     }
 }
 
