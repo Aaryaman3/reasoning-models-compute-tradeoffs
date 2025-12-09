@@ -116,21 +116,44 @@ def extract_numerical_answer(text):
     
     return None
 
-
 def extract_mcq_answer(text):
-    """Extract multiple choice answer (A, B, C, D)."""
-    text = text.upper()
+    """Extract multiple choice answer (A, B, C, D) - handles Llama tokens."""
+    # Remove special tokens
+    text = text.replace('<|eot_id|>', '').replace('<|end_of_text|>', '')
+    text = text.replace('<｜end▁of▁sentence｜>', '').strip()
+    text_upper = text.upper().strip()
     
-    patterns = [
-        r'\(([A-D])\)',
-        r'(?:ANSWER|CHOICE)(?:\s+IS)?:?\s*([A-D])',
-        r'\b([A-D])\b'
-    ]
+    # If response is just a single letter - perfect!
+    if text_upper in ['A', 'B', 'C', 'D']:
+        return text_upper
     
-    for pattern in patterns:
-        match = re.search(pattern, text)
-        if match:
-            return match.group(1)
+    # Letter at the very start
+    if len(text_upper) > 0 and text_upper[0] in ['A', 'B', 'C', 'D']:
+        return text_upper[0]
+    
+    # Pattern 1: "THE ANSWER IS B" or "ANSWER IS B"
+    pattern1 = r'(?:THE\s+)?ANSWER\s+IS\s+([A-D])'
+    match = re.search(pattern1, text_upper)
+    if match:
+        return match.group(1)
+    
+    # Pattern 2: "ANSWER: B"
+    pattern2 = r'ANSWER:\s*([A-D])'
+    match = re.search(pattern2, text_upper)
+    if match:
+        return match.group(1)
+    
+    # Pattern 3: "(C)" format
+    pattern3 = r'\(([A-D])\)'
+    match = re.search(pattern3, text_upper)
+    if match:
+        return match.group(1)
+    
+    # Pattern 4: any A/B/C/D in the text
+    pattern4 = r'([A-D])'
+    match = re.search(pattern4, text_upper)
+    if match:
+        return match.group(1)
     
     return None
 
@@ -273,23 +296,30 @@ def format_gsm8k_prompt(question):
     """Format GSM8K prompt."""
     return f"Solve this math problem step by step:\n\n{question}\n\nSolution:"
 
-
 def format_sat_prompt(problem):
-    """Format SAT MCQ prompt."""
-    prompt = "Answer this SAT question by selecting the correct choice.\n\n"
+    """Format SAT/MMLU MCQ prompt - uses Llama chat format."""
     
-    if problem.get('passage'):
-        prompt += f"Passage:\n{problem['passage']}\n\n"
+    # Llama-3 chat format with system message
+    prompt = "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\n"
+    prompt += "You are a test-taking assistant. When given a multiple choice question, you respond with ONLY a single letter: A, B, C, or D. You do not explain, calculate, or write anything else. Just the letter."
+    prompt += "<|eot_id|><|start_header_id|>user<|end_header_id|>\n\n"
     
+    # Add passage if exists
+    if problem.get('passage') and problem['passage'].strip():
+        prompt += f"Context: {problem['passage']}\n\n"
+    
+    # Add question
     prompt += f"Question: {problem['question']}\n\n"
     
+    # Add choices
     if problem.get('choices'):
-        prompt += "Choices:\n"
         for i, choice in enumerate(problem['choices']):
-            letter = chr(65 + i)
-            prompt += f"({letter}) {choice}\n"
+            letter = chr(65 + i)  # A, B, C, D
+            prompt += f"{letter}) {choice}\n"
     
-    prompt += "\nAnswer (select A, B, C, or D):"
+    prompt += "\nAnswer (one letter only):"
+    prompt += "<|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n"
+    
     return prompt
 
 # ============================================================
