@@ -1,0 +1,65 @@
+2025-12-09 06:40:09,568 [INFO] ============================================================
+2025-12-09 06:40:09,568 [INFO] BASELINE EVALUATION - PRODUCTION RUN
+2025-12-09 06:40:09,568 [INFO] ============================================================
+2025-12-09 06:40:09,568 [INFO] Start time: 2025-12-09 06:40:09
+2025-12-09 06:40:09,568 [INFO] Initializing Tinker clients...
+2025-12-09 06:40:10,223 [INFO] ServiceClient initialized for session 5cfee079-bb25-56aa-84c6-39a59ce858d2
+2025-12-09 06:40:19,523 [INFO] ✓ Small model: meta-llama/Llama-3.1-8B-Instruct
+2025-12-09 06:40:19,523 [INFO] ✓ Large model: deepseek-ai/DeepSeek-V3.1
+2025-12-09 06:40:19,523 [INFO] 
+============================================================
+2025-12-09 06:40:19,523 [INFO] DATASET: GSM8K
+2025-12-09 06:40:19,523 [INFO] ============================================================
+2025-12-09 06:40:19,523 [INFO] Loading GSM8K dataset...
+2025-12-09 06:40:28,936 [INFO] 
+>>> Evaluating Small Model on GSM8K
+2025-12-09 06:40:28,936 [INFO] 
+============================================================
+2025-12-09 06:40:28,936 [INFO] Starting: gsm8k - meta-llama/Llama-3.1-8B-Instruct
+2025-12-09 06:40:28,936 [INFO] ============================================================
+2025-12-09 06:41:19,025 [WARNING] Received shutdown signal. Saving progress...
+2025-12-09 06:41:19,025 [ERROR] GSM8K evaluation failed: [Errno 32] Broken pipe
+2025-12-09 06:41:19,027 [ERROR] Traceback (most recent call last):
+  File "/home/aaryamanbajaj/reasoning_efficiency_project/main.py", line 570, in main
+    _, stats = evaluate_dataset(
+               ^^^^^^^^^^^^^^^^^
+  File "/home/aaryamanbajaj/reasoning_efficiency_project/main.py", line 451, in evaluate_dataset
+    pbar.set_postfix({
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 1431, in set_postfix
+    self.refresh()
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 1347, in refresh
+    self.display()
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 1495, in display
+    self.sp(self.__str__() if msg is None else msg)
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 459, in print_status
+    fp_write('\r' + s + (' ' * max(last_len[0] - len_s, 0)))
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 452, in fp_write
+    fp.write(str(s))
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/utils.py", line 196, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+
+2025-12-09 06:41:19,027 [INFO] 
+============================================================
+2025-12-09 06:41:19,027 [INFO] DATASET: SAT (Mixed Math + English)
+2025-12-09 06:41:19,027 [INFO] ============================================================
+2025-12-09 06:41:19,027 [INFO] Loading AGIEval SAT datasets...
+2025-12-09 06:41:19,260 [ERROR] Failed to load SAT data: Dataset 'hails/agieval' doesn't exist on the Hub or cannot be accessed.
+2025-12-09 06:41:19,260 [INFO] 
+============================================================
+2025-12-09 06:41:19,260 [INFO] EVALUATION COMPLETE
+2025-12-09 06:41:19,260 [INFO] ============================================================
+2025-12-09 06:41:19,260 [INFO] Total duration: 0.02 hours
+2025-12-09 06:41:19,260 [INFO] End time: 2025-12-09 06:41:19
+2025-12-09 06:41:19,260 [INFO] 
+Summary saved to: results/summary_all.json
+2025-12-09 06:41:19,260 [INFO] All results saved to: ./results
+2025-12-09 06:41:19,260 [INFO] 
+============================================================
+2025-12-09 06:41:19,260 [INFO] SUMMARY TABLE
+2025-12-09 06:41:19,260 [INFO] ============================================================
+2025-12-09 06:41:19,260 [INFO] 
+============================================================
+2025-12-09 06:41:19,260 [INFO] Done! 🎉
+2025-12-09 06:41:19,260 [INFO] ============================================================

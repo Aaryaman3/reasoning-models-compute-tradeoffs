@@ -1,0 +1,70 @@
+2025-12-09 15:36:36,325 [INFO] ============================================================
+2025-12-09 15:36:36,325 [INFO] BASELINE EVALUATION - PRODUCTION RUN
+2025-12-09 15:36:36,326 [INFO] ============================================================
+2025-12-09 15:36:36,326 [INFO] Start time: 2025-12-09 15:36:36
+2025-12-09 15:36:36,326 [INFO] Initializing Tinker clients...
+2025-12-09 15:36:36,990 [INFO] ServiceClient initialized for session 14cd0ba1-f605-5212-b943-0de969e39699
+2025-12-09 15:36:43,495 [INFO] ✓ Small model: meta-llama/Llama-3.1-8B-Instruct
+2025-12-09 15:36:43,495 [INFO] ✓ Large model: deepseek-ai/DeepSeek-V3.1
+2025-12-09 15:36:43,495 [INFO] 
+============================================================
+2025-12-09 15:36:43,495 [INFO] DATASET: GSM8K
+2025-12-09 15:36:43,495 [INFO] ============================================================
+2025-12-09 15:36:43,495 [INFO] Loading GSM8K dataset...
+2025-12-09 15:36:47,935 [INFO] 
+>>> Evaluating Small Model on GSM8K
+2025-12-09 15:36:47,935 [INFO] 
+============================================================
+2025-12-09 15:36:47,935 [INFO] Starting: gsm8k - meta-llama/Llama-3.1-8B-Instruct
+2025-12-09 15:36:47,935 [INFO] ============================================================
+2025-12-09 15:37:31,139 [WARNING] Received shutdown signal. Saving progress...
+2025-12-09 15:37:31,417 [WARNING] Received shutdown signal. Saving progress...
+2025-12-09 15:37:32,591 [WARNING] Received shutdown signal. Saving progress...
+2025-12-09 15:37:32,812 [WARNING] Received shutdown signal. Saving progress...
+2025-12-09 15:37:35,691 [ERROR] GSM8K evaluation failed: [Errno 32] Broken pipe
+2025-12-09 15:37:35,692 [ERROR] Traceback (most recent call last):
+  File "/home/aaryamanbajaj/reasoning_efficiency_project/main.py", line 582, in main
+    _, stats = evaluate_dataset(
+               ^^^^^^^^^^^^^^^^^
+  File "/home/aaryamanbajaj/reasoning_efficiency_project/main.py", line 463, in evaluate_dataset
+    pbar.set_postfix({
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 1431, in set_postfix
+    self.refresh()
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 1347, in refresh
+    self.display()
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 1495, in display
+    self.sp(self.__str__() if msg is None else msg)
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 459, in print_status
+    fp_write('\r' + s + (' ' * max(last_len[0] - len_s, 0)))
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/std.py", line 452, in fp_write
+    fp.write(str(s))
+  File "/home/aaryamanbajaj/miniconda/envs/baseline/lib/python3.11/site-packages/tqdm/utils.py", line 196, in inner
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+BrokenPipeError: [Errno 32] Broken pipe
+
+2025-12-09 15:37:35,693 [INFO] 
+============================================================
+2025-12-09 15:37:35,693 [INFO] DATASET: MMLU (Mixed Math + Humanities)
+2025-12-09 15:37:35,693 [INFO] ============================================================
+2025-12-09 15:37:35,693 [INFO] Loading MMLU mixed subjects...
+2025-12-09 15:37:38,450 [ERROR] Failed to load MMLU data: [Errno 32] Broken pipe
+2025-12-09 15:37:38,450 [INFO] 
+============================================================
+2025-12-09 15:37:38,451 [INFO] EVALUATION COMPLETE
+2025-12-09 15:37:38,451 [INFO] ============================================================
+2025-12-09 15:37:38,451 [INFO] Total duration: 0.02 hours
+2025-12-09 15:37:38,451 [INFO] End time: 2025-12-09 15:37:38
+2025-12-09 15:37:38,451 [INFO] 
+Summary saved to: results/summary_all.json
+2025-12-09 15:37:38,451 [INFO] All results saved to: ./results
+2025-12-09 15:37:38,451 [INFO] 
+============================================================
+2025-12-09 15:37:38,451 [INFO] SUMMARY TABLE
+2025-12-09 15:37:38,451 [INFO] ============================================================
+2025-12-09 15:37:38,451 [INFO] 
+============================================================
+2025-12-09 15:37:38,451 [INFO] Done! 🎉
+2025-12-09 15:37:38,451 [INFO] ============================================================
+2025-12-09 15:37:43,185 [WARNING] Received shutdown signal. Saving progress...
+2025-12-09 15:38:32,501 [WARNING] Received shutdown signal. Saving progress...

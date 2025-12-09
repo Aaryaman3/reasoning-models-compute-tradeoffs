@@ -1,0 +1,12 @@
+{
+  "dataset": "sat",
+  "model": "deepseek-ai/DeepSeek-V3.1",
+  "total_samples": 300,
+  "correct": 212,
+  "accuracy": 0.7066666666666667,
+  "avg_tokens": 7.18,
+  "timestamp": "2025-12-09T16:34:26.234651",
+  "math_accuracy": 0.7066666666666667,
+  "math_correct": 212,
+  "math_total": 300
+}

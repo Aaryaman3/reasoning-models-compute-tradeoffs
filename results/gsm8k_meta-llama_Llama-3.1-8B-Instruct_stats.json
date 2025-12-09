@@ -1,0 +1,9 @@
+{
+  "dataset": "gsm8k",
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "total_samples": 500,
+  "correct": 318,
+  "accuracy": 0.636,
+  "avg_tokens": 367.556,
+  "timestamp": "2025-12-09T08:01:40.812056"
+}

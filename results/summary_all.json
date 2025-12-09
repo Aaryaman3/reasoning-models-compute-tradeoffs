@@ -1,0 +1,30 @@
+{
+  "stats": [
+    {
+      "dataset": "sat",
+      "model": "meta-llama/Llama-3.1-8B-Instruct",
+      "total_samples": 300,
+      "correct": 99,
+      "accuracy": 0.33,
+      "avg_tokens": 2.2133333333333334,
+      "timestamp": "2025-12-09T16:26:55.491733",
+      "math_accuracy": 0.33,
+      "math_correct": 99,
+      "math_total": 300
+    },
+    {
+      "dataset": "sat",
+      "model": "deepseek-ai/DeepSeek-V3.1",
+      "total_samples": 300,
+      "correct": 212,
+      "accuracy": 0.7066666666666667,
+      "avg_tokens": 7.18,
+      "timestamp": "2025-12-09T16:34:26.234651",
+      "math_accuracy": 0.7066666666666667,
+      "math_correct": 212,
+      "math_total": 300
+    }
+  ],
+  "duration_hours": 0.1971002428399192,
+  "timestamp": "2025-12-09T16:34:26.238741"
+}

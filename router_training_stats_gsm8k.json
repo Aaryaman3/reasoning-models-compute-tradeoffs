@@ -1,0 +1,31 @@
+{
+  "dataset": "gsm8k",
+  "total_samples": 500,
+  "label_distribution": {
+    "small": 359,
+    "large": 141
+  },
+  "problem_breakdown": {
+    "both_correct": 279,
+    "only_large_correct": 141,
+    "only_small_correct": 39,
+    "both_wrong": 41
+  },
+  "percentages": {
+    "route_to_small": 71.8,
+    "route_to_large": 28.199999999999996
+  },
+  "costs": {
+    "small_total_tokens": 183778,
+    "large_total_tokens": 102738,
+    "small_cost": 0.0183778,
+    "large_cost": 0.102738,
+    "optimal_router_cost": 0.0421673764,
+    "savings_vs_always_large": 58.956397438143625
+  },
+  "accuracy": {
+    "small": 0.636,
+    "large": 0.84,
+    "optimal_router": 0.84
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "dataset": "gsm8k",
+  "model": "deepseek-ai/DeepSeek-V3.1",
+  "total_samples": 500,
+  "correct": 420,
+  "accuracy": 0.84,
+  "avg_tokens": 205.476,
+  "timestamp": "2025-12-09T10:14:09.660943"
+}

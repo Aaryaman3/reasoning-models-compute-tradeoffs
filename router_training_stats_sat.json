@@ -1,0 +1,31 @@
+{
+  "dataset": "sat",
+  "total_samples": 300,
+  "label_distribution": {
+    "small": 165,
+    "large": 135
+  },
+  "problem_breakdown": {
+    "both_correct": 77,
+    "only_large_correct": 135,
+    "only_small_correct": 22,
+    "both_wrong": 66
+  },
+  "percentages": {
+    "route_to_small": 55.00000000000001,
+    "route_to_large": 45.0
+  },
+  "costs": {
+    "small_total_tokens": 664,
+    "large_total_tokens": 2154,
+    "small_cost": 6.64e-05,
+    "large_cost": 0.002154,
+    "optimal_router_cost": 0.0010058200000000002,
+    "savings_vs_always_large": 53.3045496750232
+  },
+  "accuracy": {
+    "small": 0.33,
+    "large": 0.7066666666666667,
+    "optimal_router": 0.7066666666666667
+  }
+}
