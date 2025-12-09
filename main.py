@@ -219,38 +219,50 @@ def load_gsm8k():
 
 
 def load_sat_mixed():
-    """Load mixed SAT dataset."""
-    logger.info("Loading AGIEval SAT datasets...")
+    """Load MMLU mixed subjects as SAT replacement."""
+    logger.info("Loading MMLU mixed subjects...")
     
     try:
-        sat_math = load_dataset("hails/agieval", "sat-math", split='test')
-        sat_en = load_dataset("hails/agieval", "sat-en", split='test')
+        from datasets import load_dataset
         
         mixed_data = []
         
-        for ex in sat_math:
-            mixed_data.append({
-                'question': ex['question'],
-                'choices': ex.get('choices', []),
-                'answer': ex['answer'],
-                'type': 'math',
-                'passage': ex.get('passage', '')
-            })
+        # Math subjects
+        math_subjects = ['high_school_mathematics', 'elementary_mathematics', 'abstract_algebra']
         
-        for ex in sat_en:
-            mixed_data.append({
-                'question': ex['question'],
-                'choices': ex.get('choices', []),
-                'answer': ex['answer'],
-                'type': 'english',
-                'passage': ex.get('passage', '')
-            })
+        # Humanities subjects  
+        humanities_subjects = ['high_school_us_history', 'philosophy', 'moral_scenarios']
         
-        logger.info(f"Loaded {len(mixed_data)} SAT problems")
+        for subject in math_subjects:
+            dataset = load_dataset("cais/mmlu", subject, split='test')
+            for ex in dataset:
+                mixed_data.append({
+                    'question': ex['question'],
+                    'choices': ex['choices'],
+                    'answer': ex['answer'],  # 0, 1, 2, 3
+                    'type': 'math',
+                    'passage': ''
+                })
+        
+        for subject in humanities_subjects:
+            dataset = load_dataset("cais/mmlu", subject, split='test')
+            for ex in dataset:
+                mixed_data.append({
+                    'question': ex['question'],
+                    'choices': ex['choices'],
+                    'answer': ex['answer'],
+                    'type': 'humanities',
+                    'passage': ''
+                })
+        
+        logger.info(f"Loaded {len(mixed_data)} MMLU problems")
+        logger.info(f"  - Math: {sum(1 for x in mixed_data if x['type']=='math')}")
+        logger.info(f"  - Humanities: {sum(1 for x in mixed_data if x['type']=='humanities')}")
+        
         return mixed_data
         
     except Exception as e:
-        logger.error(f"Failed to load SAT data: {e}")
+        logger.error(f"Failed to load MMLU data: {e}")
         return []
 
 # ============================================================
@@ -600,11 +612,10 @@ def main():
     # ============================================================
     # SAT Evaluation
     # ============================================================
-    
     if config.DATASETS['sat']['enabled']:
         try:
             logger.info("\n" + "="*60)
-            logger.info("DATASET: SAT (Mixed Math + English)")
+            logger.info("DATASET: MMLU (Mixed Math + Humanities)")  # Updated
             logger.info("="*60)
             
             sat_data = load_sat_mixed()
